@@ -9,7 +9,7 @@
     <link href="static/bootstrap-combined.min.css" rel="stylesheet">
     <link href="static/app.css" rel="stylesheet">
     <link href="static/app-theme.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,300italic,100,100italic,300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300italic,100,100italic,300" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]><script src="static/html5shiv.min.js"></script><![endif]-->
   </head>
   <body data-target=".content-nav">
@@ -23,7 +23,7 @@
             <menu>
               <ul>
                 <li><a href="#download" class="menu download">Download <span class="version-tag">Latest</span></a></li>
-                <li><a href="http://github.com/WellingtonCosta/convalida" data-title="View GitHub Project" class="menu github"><img src="static/icon-github.png" alt="GitHub"/></a></li>
+                <li><a href="https://github.com/WellingtonCosta/convalida" data-title="View GitHub Project" class="menu github"><img src="static/icon-github.png" alt="GitHub"/></a></li>
               </ul>
             </menu>
           </div>
@@ -125,7 +125,7 @@ limitations under the License.
         </div>
       </div>
     </section>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="static/bootstrap.min.js"></script>
     <script src="static/jquery.smooth-scroll.min.js"></script>
     <script src="static/jquery-jitpack-artifact.js"></script>
@@ -152,15 +152,15 @@ limitations under the License.
           }
         });
 
-        (getLatestRelease('com.github.WellingtonCosta', 'convalida', function(version, url) {
+        getLatestRelease('com.github.WellingtonCosta', 'convalida', function(version, url) {
           $('.version').text(version);
           $('.version-tag').text('v' + version);
           $('.core-version-href').attr('href', url);
-        }))();
+        });
 
-        (getLatestModuleRelease('com.github.WellingtonCosta', 'convalida', 'convalida-compiler', function(url) {
+        getLatestModuleRelease('com.github.WellingtonCosta', 'convalida', 'convalida-compiler', function(url) {
           $('.compiler-version-href').attr('href', url);
-        }))();
+        });
 
         // Look up the latest version of the library.
         /*$.fn.artifactVersion('br.com.wellingtoncosta.convalida', 'convalida', function(version, url) {
