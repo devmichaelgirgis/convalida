@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles, Divider, Typography } from '@material-ui/core';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
@@ -68,14 +68,14 @@ class SideMenu extends Component {
             <ListSubheader>Getting Started</ListSubheader>
             <MenuItem
               title='Introduction'
-              url='/introduction'
+              url='introduction'
               onClick={() => this.toggleMenu(false)}
               icon={ <GettingStartedIcon /> }
               style={classes.link} />
 
             <MenuItem
               title='Download'
-              url='/download'
+              url='download'
               onClick={() => this.toggleMenu(false)}
               icon={ <CloudDownloadIcon /> }
               style={classes.link} />

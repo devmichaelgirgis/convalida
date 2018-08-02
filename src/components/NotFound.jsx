@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Typography, withStyles } from '@material-ui/core';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import AppBar from './appbar/AppBar';
 
 const styles = {

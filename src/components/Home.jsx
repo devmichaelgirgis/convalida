@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Typography, withStyles, Avatar, Button } from '@material-ui/core';
 import Viewport from './Viewport';
 import logo from '../assets/images/logo.png';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 const styles = {
   avatar: {
