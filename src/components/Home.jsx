@@ -1,18 +1,59 @@
 import React, { Component } from 'react';
-import AppBar from './appbar/AppBar';
-import { Typography } from '@material-ui/core';
+import { Typography, withStyles, Avatar, Button } from '@material-ui/core';
+import Viewport from './Viewport';
+import logo from '../assets/images/logo.png';
+import { Link } from '@reach/router';
+
+const styles = {
+  avatar: {
+    width: 240,
+    height: 240,
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  },
+  title: {
+    color: '#777777',
+    marginTop: 32
+  },
+  subtitle: {
+    color: '#777777',
+    marginTop: 8
+  },
+  button: {
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 32
+  }
+};
 
 class Home extends Component {
+
   render() {
+    const { classes } = this.props;
     return (
-      <div style={{ marginTop: 72 }}>
-        <AppBar title="Convalida" />
-        <Typography align="center" variant="display1">
-          Hello, Convalida Docs!
-        </Typography>
-      </div>
+      <Viewport>
+        <div style={{ marginTop: 128 }}>
+          <Avatar alt="Logo" src={logo} className={classes.avatar} />
+          <Typography className={classes.title} align="center" variant="display2">
+            Convalida
+          </Typography>
+          <Typography className={classes.subtitle} align="center" variant="headline">
+            A field validation library for Android.
+          </Typography>
+          <Link to="introduction" style={{ textDecoration: 'none' }}>
+            <Button
+              variant="outlined"
+              color="primary"
+              className={classes.button}>
+              Get Started
+            </Button>
+          </Link>
+        </div>
+      </Viewport>
     );
   }
 }
 
-export default Home;
+export default withStyles(styles)(Home);

@@ -5,6 +5,7 @@ import { default as MaterialAppBar } from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import GitHubButton from './GitHubButton';
+import SideMenu from './SideMenu';
 
 const styles = {
   root: {
@@ -27,11 +28,11 @@ class AppBar extends Component {
       <div className={classes.root}>
         <MaterialAppBar style={{position: 'fixed'}}>
           <Toolbar>
+            <SideMenu />
             <Typography
               variant="title"
               color="inherit"
-              className={classes.flex}
-              style={{fontWeight: 'bold'}}>
+              className={classes.flex}>
               {title}
             </Typography>
             <GitHubButton />

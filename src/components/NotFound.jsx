@@ -16,7 +16,7 @@ class NotFound extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div style={{ marginTop: "25%" }}>
+      <div style={{ marginTop: "15%" }}>
         <AppBar title="Convalida" />
         <Typography align="center" variant="display1">
           :(

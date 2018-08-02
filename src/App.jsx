@@ -3,6 +3,8 @@ import { Router } from '@reach/router';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
+import Introduction from './components/gettingstarted/Introduction';
+import Download from './components/gettingstarted/Download';
 
 const theme = createMuiTheme({
   palette: {
@@ -20,6 +22,8 @@ export default class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Router basepath={process.env.PUBLIC_URL}>
           <Home path="/" />
+          <Introduction path="introduction" />
+          <Download path="download" />
           <NotFound default />
         </Router>
       </MuiThemeProvider>
