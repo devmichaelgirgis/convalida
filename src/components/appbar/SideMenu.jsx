@@ -8,9 +8,6 @@ import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import GettingStartedIcon from '@material-ui/icons/FlightTakeoff';
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 
 const styles = theme => ({
   menuTitle: {
@@ -31,9 +28,6 @@ const styles = theme => ({
 const MenuItem = props => (
   <Link to={props.url} className={props.style}>
     <ListItem button onClick={props.onClick}>
-      <ListItemIcon>
-        {props.icon}
-      </ListItemIcon>
       <ListItemText primary={props.title} />
     </ListItem>
   </Link>
@@ -65,25 +59,31 @@ class SideMenu extends Component {
           </Typography>
           <Divider />
           <List component="nav">
-            <ListSubheader>Getting Started</ListSubheader>
-            <MenuItem
-              title='Introduction'
-              url='introduction'
-              onClick={() => this.toggleMenu(false)}
-              icon={ <GettingStartedIcon /> }
-              style={classes.link} />
-
-            <MenuItem
-              title='Download'
-              url='download'
-              onClick={() => this.toggleMenu(false)}
-              icon={ <CloudDownloadIcon /> }
-              style={classes.link} />
+            <GettingStartedSection
+              classes={classes}
+              toggleMenu={this.toggleMenu} />
           </List>
         </Drawer>
       </div>
     );
   }
 }
+
+const GettingStartedSection = props => (
+  <div>
+    <ListSubheader>Getting Started</ListSubheader>
+    <MenuItem
+      title='Introduction'
+      url='introduction'
+      onClick={() => props.toggleMenu(false)}
+      style={props.classes.link} />
+
+    <MenuItem
+      title='Download'
+      url='download'
+      onClick={() => props.toggleMenu(false)}
+      style={props.classes.link} />
+  </div>
+);
 
 export default withStyles(styles)(SideMenu);

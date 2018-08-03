@@ -47,7 +47,7 @@ class Home extends Component {
               variant="outlined"
               color="primary"
               className={classes.button}>
-              Get Started
+              <b>Get Started</b>
             </Button>
           </Link>
         </div>
