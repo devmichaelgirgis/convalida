@@ -73,7 +73,7 @@ const Api = props => (
   </div>
 );
 
-const Annotation = props => (
+const Annotation = () => (
   <div>
     <Typography variant="subheading" style={{ marginTop: 32 }}>
       Using with Annotation
@@ -89,7 +89,7 @@ EditText nameField;
   </div>
 );
 
-const DataBinding = props => (
+const DataBinding = () => (
   <div>
     <Typography variant="subheading" style={{ marginTop: 32 }}>
       Using with Data Binding
