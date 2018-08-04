@@ -16,9 +16,6 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 8,
     marginRight: theme.spacing.unit * 8,
   },
-  text: {
-    color: '#777777',
-  },
   button: {
     height: 60,
     marginTop: 32,
@@ -63,17 +60,17 @@ class Download extends Component {
     return (
       <Viewport>
         <div className={classes.div}>
-          <Typography className={classes.text} variant="display1">
+          <Typography variant="title">
             Download
           </Typography>
-          <Typography className={classes.text} style={{ marginTop: 16 }} variant="title">
+          <Typography style={{ marginTop: 16 }}>
             You need to include Convalida JARs in your classpath to use it. Convalida has two JARs, runtime library and compiler library. You can download JARs directly by clicking on buttons above or include it as dependencies in Maven or Gradle.
           </Typography>
-          <Typography className={classes.text} style={{ marginTop: 32 }} variant="title">
+          <Typography style={{ marginTop: 32 }}>
             The source code is available on <Link text="GitHub repository" url="https://github.com/WellingtonCosta/convalida" />.
           </Typography>
 
-          <Typography className={classes.text} style={{ marginTop: 32 }} variant="title">
+          <Typography variant="subheading" style={{ marginTop: 32 }}>
             Download JARs:
           </Typography>
 
@@ -104,11 +101,11 @@ class Download extends Component {
             </Grid>
           </Grid>
 
-          <Typography className={classes.text} style={{ marginTop: 32 }} variant="title">
+          <Typography variant="subheading" style={{ marginTop: 32 }}>
             Maven:
           </Typography>
 
-          <Typography className={classes.text} style={{ marginTop: 16, fontSize: 16 }}>
+          <Typography style={{ marginTop: 16 }}>
             Step 1: Add Jitpack repository
           </Typography>
           <Code style={{ marginTop: 8 }} language="groovy" code={`
@@ -119,7 +116,7 @@ class Download extends Component {
   &lt;/repository>
 &lt;/repositories>
             `} />
-          <Typography className={classes.text} style={{ marginTop: 16, fontSize: 16 }}>
+          <Typography style={{ marginTop: 16 }}>
             Step 2: Add dependencies
           </Typography>
           <Code style={{ marginTop: 8 }} language="groovy" code={`
@@ -136,11 +133,11 @@ class Download extends Component {
 &lt;/dependency>
             `} />
 
-          <Typography className={classes.text} style={{ marginTop: 32 }} variant="title">
+          <Typography variant="subheading" style={{ marginTop: 32 }}>
             Gradle:
           </Typography>
 
-          <Typography className={classes.text} style={{ marginTop: 16, fontSize: 16 }}>
+          <Typography style={{ marginTop: 16 }}>
             Step 1: Add Jitpack repository
           </Typography>
           <Code style={{ marginTop: 8 }} language="groovy" code={`
@@ -150,7 +147,7 @@ allprojects {
   }
 }
             `} />
-          <Typography className={classes.text} style={{ marginTop: 16, fontSize: 16 }}>
+          <Typography style={{ marginTop: 16 }}>
             Step 2: Add dependencies
           </Typography>
           <Code style={{ marginTop: 8 }} language="groovy" code={`
@@ -160,7 +157,7 @@ dependencies {
 }
             `} />
 
-          <Typography className={classes.text} style={{ marginTop: 32 }} variant="title">
+          <Typography variant="subheading" style={{ marginTop: 32 }}>
             License
           </Typography>
           <Code style={{ marginTop: 8 }} colorize={false} code={`

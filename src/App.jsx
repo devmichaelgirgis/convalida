@@ -5,6 +5,7 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Introduction from './components/gettingstarted/Introduction';
 import Download from './components/gettingstarted/Download';
+import RequiredValidation from './components/api/RequiredValidation';
 
 const theme = createMuiTheme({
   palette: {
@@ -13,7 +14,23 @@ const theme = createMuiTheme({
       contrastText: '#FFF',
       link: '#EA0760'
     }
-  }
+  },
+  overrides: {
+    MuiTypography: {
+      title: {
+        fontSize: 36,
+        color: '#777777',
+      },
+      subheading: {
+        fontSize: 28,
+        color: '#777777',
+      },
+      body1: {
+        fontSize: 20,
+        color: '#777777',
+      }
+    }
+}
 });
 
 export default class App extends Component {
@@ -25,6 +42,7 @@ export default class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/introduction" component={Introduction} />
             <Route path="/download" component={Download} />
+            <Route path="/required-validation" component={RequiredValidation} />
             <Route component={NotFound} />
           </Switch>
         </Router>

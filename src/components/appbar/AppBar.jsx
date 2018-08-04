@@ -30,7 +30,6 @@ class AppBar extends Component {
           <Toolbar>
             <SideMenu />
             <Typography
-              variant="title"
               color="inherit"
               className={classes.flex}>
               {title}

@@ -7,7 +7,6 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 
 const styles = theme => ({
   menuTitle: {
@@ -28,7 +27,9 @@ const styles = theme => ({
 const MenuItem = props => (
   <Link to={props.url} className={props.style}>
     <ListItem button onClick={props.onClick}>
-      <ListItemText primary={props.title} />
+      <Typography style={{ fontSize: 16, color: '#333' }}>
+        {props.title}
+      </Typography>
     </ListItem>
   </Link>
 );
@@ -62,6 +63,9 @@ class SideMenu extends Component {
             <GettingStartedSection
               classes={classes}
               toggleMenu={this.toggleMenu} />
+            <ApiSection
+              classes={classes}
+              toggleMenu={this.toggleMenu} />
           </List>
         </Drawer>
       </div>
@@ -81,6 +85,17 @@ const GettingStartedSection = props => (
     <MenuItem
       title='Download'
       url='download'
+      onClick={() => props.toggleMenu(false)}
+      style={props.classes.link} />
+  </div>
+);
+
+const ApiSection = props => (
+  <div>
+    <ListSubheader>API</ListSubheader>
+    <MenuItem
+      title='Required Validation'
+      url='required-validation'
       onClick={() => props.toggleMenu(false)}
       style={props.classes.link} />
   </div>
