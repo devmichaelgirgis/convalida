@@ -9,15 +9,14 @@ class Code extends Component {
   };
 
   render() {
-    const { code, colorize, language } = this.props;
+    const { code, colorize, language, style } = this.props;
     const formattedCode = code.replace(/(?:\r\n|\r|\n)/g, '<br>');
     const codeData = prettify.prettyPrintOne(formattedCode, language);
     const codeClassName = language !== undefined ? `language-${language}` : undefined;
-    console.log(colorize);
     return (
       <code className={codeClassName}>
         <div
-          style={{ whiteSpace: 'pre-wrap' }}
+          style={{ ...style, whiteSpace: 'pre-wrap' }}
           dangerouslySetInnerHTML={{__html: colorize ? codeData : formattedCode }} />
       </code>
     );

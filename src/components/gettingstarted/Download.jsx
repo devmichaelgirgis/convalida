@@ -108,7 +108,7 @@ class Download extends Component {
           <Typography style={{ marginTop: 16 }}>
             Step 1: Add Jitpack repository
           </Typography>
-          <Code style={{ marginTop: 8 }} language="groovy" code={`
+          <Code style={{ marginTop: 8, fontSize: 16 }} language="groovy" code={`
 &lt;repositories>
   &lt;repository>
     &lt;id>jitpack.io&lt;/id>
@@ -119,7 +119,7 @@ class Download extends Component {
           <Typography style={{ marginTop: 16 }}>
             Step 2: Add dependencies
           </Typography>
-          <Code style={{ marginTop: 8 }} language="groovy" code={`
+          <Code style={{ marginTop: 8, fontSize: 16 }} language="groovy" code={`
 &lt;dependency>
   &lt;groupId>com.github.WellingtonCosta.convalida&lt;/groupId>
   &lt;artifactId>convalida&lt;/artifactId>
@@ -140,7 +140,7 @@ class Download extends Component {
           <Typography style={{ marginTop: 16 }}>
             Step 1: Add Jitpack repository
           </Typography>
-          <Code style={{ marginTop: 8 }} language="groovy" code={`
+          <Code style={{ marginTop: 8, fontSize: 16 }} language="groovy" code={`
 allprojects {
   repositories {
     maven { url 'https://jitpack.io' }
@@ -150,7 +150,7 @@ allprojects {
           <Typography style={{ marginTop: 16 }}>
             Step 2: Add dependencies
           </Typography>
-          <Code style={{ marginTop: 8 }} language="groovy" code={`
+          <Code style={{ marginTop: 8, fontSize: 16 }} language="groovy" code={`
 dependencies {
   implementation 'com.github.WellingtonCosta.convalida:convalida:${latestRelease}'
   annotationProcesso 'com.github.WellingtonCosta.convalida:convalida-compiler:${latestRelease}'
@@ -160,7 +160,7 @@ dependencies {
           <Typography variant="subheading" style={{ marginTop: 32 }}>
             License
           </Typography>
-          <Code style={{ marginTop: 8 }} colorize={false} code={`
+          <Code style={{ marginTop: 8, fontSize: 16 }} colorize={false} code={`
 Copyright 2017 Wellington Costa
 
 Licensed under the Apache License, Version 2.0 (the "License");
