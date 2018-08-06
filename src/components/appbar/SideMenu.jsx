@@ -98,6 +98,12 @@ const ApiSection = props => (
       url='required-validation'
       onClick={() => props.toggleMenu(false)}
       style={props.classes.link} />
+
+    <MenuItem
+      title='Email Validation'
+      url='email-validation'
+      onClick={() => props.toggleMenu(false)}
+      style={props.classes.link} />
   </div>
 );
 
