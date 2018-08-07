@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Introduction from './components/gettingstarted/Introduction';
