@@ -38,7 +38,7 @@ export default class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/introduction" component={Introduction} />
