@@ -16,17 +16,17 @@ const styles = theme => ({
 });
 
 
-class LengthValidation extends Component {
+class OnlyNumberValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
       <Viewport>
         <div className={classes.div}>
           <Typography variant="title">
-            Length Validation
+            Only Number Validation
           </Typography>
           <Typography style={{ marginTop: 32 }}>
-            This validation is applied to fields that have a minimum and maximum length of characters allowed.
+            This validation is applied to fields that must accepts only numeric characters.
           </Typography>
           <Api classes={classes} />
           <Annotation classes={classes} />
@@ -44,32 +44,6 @@ const Api = props => (
     </Typography>
 
     <TableApi>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          min
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          int
-        </TableCell>
-        <TableCell className={props.classes.tableText} />
-        <TableCell className={props.classes.tableText}>
-          The minimum length of characters allowed.
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          max
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          int
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          0
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          The maximum length of characters allowed.
-        </TableCell>
-      </TableRow>
       <TableRow>
         <TableCell className={props.classes.tableText}>
           errorMessage
@@ -107,14 +81,12 @@ const Annotation = () => (
     </Typography>
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="java" code={`
-@LengthValidation(
-  errorMessage = R.string.min_3_max_10,
-  min = 3,
-  max = 10
+@OnlyNumberValidation(
+  errorMessage = R.string.only_number,
   autoDismiss = true,
   required = true
 )
-EditText lengthField;
+EditText onlyNumberField;
     `} />
   </div>
 );
@@ -127,15 +99,13 @@ const DataBinding = () => (
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="xml" code={`
 &lt;EditText
-  android:id="@+id/length_field"
-  android:hint="@string/length"
-  app:lengthValidationMin="@{3}"
-  app:lengthValidationMax="@{10}"
-  app:lengthValidationErrorMessage="@{@string/min_3_max_10}"
-  app:lengthValidationAutoDismiss="@{true}" 
-  app:lengthValidationRequired="@{true}" />
+  android:id="@+id/only_number_field"
+  android:hint="@string/only_number"
+  app:onlyNumberValidationErrorMessage="@{@string/only_number}"
+  app:onlyNumberValidationAutoDismiss="@{true}" 
+  app:onlyNumberValidationRequired="@{true}" />
     `} />
   </div>
 );
 
-export default withStyles(styles)(LengthValidation);
+export default withStyles(styles)(OnlyNumberValidation);
