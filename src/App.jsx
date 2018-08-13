@@ -8,6 +8,7 @@ import Download from './components/gettingstarted/Download';
 import RequiredValidation from './components/api/RequiredValidation';
 import EmailValidation from './components/api/EmailValidation';
 import ConfirmEmailValidation from './components/api/ConfirmEmailValidation';
+import LengthValidation from './components/api/LengthValidation';
 
 const theme = createMuiTheme({
   palette: {
@@ -47,6 +48,7 @@ export default class App extends Component {
             <Route path="/required-validation" component={RequiredValidation} />
             <Route path="/email-validation" component={EmailValidation} />
             <Route path="/confirm-email-validation" component={ConfirmEmailValidation} />
+            <Route path="/length-validation" component={LengthValidation} />
             <Route component={NotFound} />
           </Switch>
         </Router>

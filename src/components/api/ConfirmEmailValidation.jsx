@@ -6,15 +6,15 @@ import Code from '../common/Code';
 import Link from '../common/Link';
 
 const styles = theme => ({
-    div: {
-      marginTop: theme.spacing.unit * 12,
-      marginLeft: theme.spacing.unit * 8,
-      marginRight: theme.spacing.unit * 8,
-    },
-    tableText: {
-      fontSize: 14
-    }
-  });
+  div: {
+    marginTop: theme.spacing.unit * 12,
+    marginLeft: theme.spacing.unit * 8,
+    marginRight: theme.spacing.unit * 8,
+  },
+  tableText: {
+    fontSize: 14
+  }
+});
 
 class ConfirmEmailValidation extends Component {
     render() {
