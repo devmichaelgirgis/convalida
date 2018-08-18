@@ -25,7 +25,7 @@ class EmailValidation extends Component {
                 Email Validation
               </Typography>
               <Typography style={{ marginTop: 32 }}>
-                This validation is applied to fields which its value accepts only e-mail address.
+                This validation is applied to fields that its value accepts only e-mail address.
               </Typography>
               <Api classes={classes} />
               <Annotation classes={classes} />

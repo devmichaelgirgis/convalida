@@ -25,7 +25,7 @@ class RequiredValidation extends Component {
             Required Validation
           </Typography>
           <Typography style={{ marginTop: 32 }}>
-            This validation is applied to fields which its value cannot be null or empty.
+            This validation is applied to fields that its value cannot be null or empty.
           </Typography>
           <Api classes={classes} />
           <Annotation classes={classes} />
