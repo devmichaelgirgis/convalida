@@ -9,13 +9,19 @@ import Drawer from '@material-ui/core/Drawer';
 import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import Axios from 'axios';
 
 const styles = theme => ({
   menuTitle: {
     fontSize: 20,
     marginLeft: theme.spacing.unit * 2,
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 2
+  },
+  menuSubtitle: {
+    fontSize: 16,
+    marginLeft: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 1.5
   },
   menuButton: {
     marginLeft: -12,
@@ -23,6 +29,13 @@ const styles = theme => ({
   },
   link: {
     textDecoration: 'none'
+  },
+  linkHoverized: {
+    textDecoration: 'none',
+    '&:hover': {
+      color: '#333',
+      textDecoration: 'underline'
+    }
   }
 });
 
@@ -41,7 +54,8 @@ class SideMenu extends Component {
   state = {
     open: false,
     gettingStartedOpened: false,
-    apiOpened: false
+    apiOpened: false,
+    release: {}
   };
 
   toggleMenu = open => this.setState({ open })
@@ -56,9 +70,20 @@ class SideMenu extends Component {
     apiOpened: !this.state.apiOpened
   })
 
+  getLatestGitHubRelease = async () => {
+    return await Axios.get("https://api.github.com/repos/WellingtonCosta/convalida/releases/latest")
+      .then(response => ({ name: response.data['name'], url: response.data['html_url'] }))
+      .catch(error => console.error(error));
+  }
+
+  async componentDidMount() {
+    const release = await this.getLatestGitHubRelease();
+    this.setState({ ...this.state, release });
+  }
+
   render() {
     const { classes } = this.props;
-    const { open, gettingStartedOpened, apiOpened } = this.state;
+    const { open, gettingStartedOpened, apiOpened, release } = this.state;
     return (
       <div>
         <IconButton
@@ -69,9 +94,18 @@ class SideMenu extends Component {
           <MenuIcon />
         </IconButton>
         <Drawer open={open} onClose={() => this.toggleMenu(false)}>
-          <Typography className={classes.menuTitle}>
-            Convalida
-          </Typography>
+          <Link to={process.env.PUBLIC_URL} className={classes.linkHoverized}>
+            <Typography className={classes.menuTitle}>
+              Convalida
+            </Typography>
+          </Link>
+          <a
+            className={classes.linkHoverized}
+            href={release.url ? release.url : process.env.PUBLIC_URL}>
+            <Typography className={classes.menuSubtitle}>
+              { release.name }
+            </Typography>
+          </a>
           <Divider />
           <List component="nav">
             <ListItem button onClick={this.toggleGettingStartedSection}>
