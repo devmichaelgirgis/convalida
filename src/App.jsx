@@ -10,6 +10,13 @@ import EmailValidation from './components/api/EmailValidation';
 import ConfirmEmailValidation from './components/api/ConfirmEmailValidation';
 import LengthValidation from './components/api/LengthValidation';
 import OnlyNumberValidation from './components/api/OnlyNumberValidation';
+import PatternValidation from './components/api/PatternValidation';
+import PasswordValidation from './components/api/PasswordValidation';
+import ConfirmPasswordValidation from './components/api/ConfirmPasswordValidation';
+import BetweenValidation from './components/api/BetweenValidation';
+import CpfValidation from './components/api/CpfValidation';
+import CreditCardValidation from './components/api/CreditCardValidation';
+import NumberLimitValidation from './components/api/NumberLimitValidation';
 
 const theme = createMuiTheme({
   palette: {
@@ -51,6 +58,13 @@ export default class App extends Component {
             <Route path="/confirm-email-validation" component={ConfirmEmailValidation} />
             <Route path="/length-validation" component={LengthValidation} />
             <Route path="/only-number-validation" component={OnlyNumberValidation} />
+            <Route path="/pattern-validation" component={PatternValidation} />
+            <Route path="/password-validation" component={PasswordValidation} />
+            <Route path="/confirm-password-validation" component={ConfirmPasswordValidation} />
+            <Route path="/between-validation" component={BetweenValidation} />
+            <Route path="/cpf-validation" component={CpfValidation} />
+            <Route path="/credit-card-validation" component={CreditCardValidation} />
+            <Route path="/number-limit-validation" component={NumberLimitValidation} />
             <Route component={NotFound} />
           </Switch>
         </Router>
