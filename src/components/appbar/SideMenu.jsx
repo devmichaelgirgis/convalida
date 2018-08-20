@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles, Divider, Typography } from '@material-ui/core';
+import { withStyles, Divider, Typography, ListSubheader } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -158,6 +158,7 @@ const GettingStartedSection = props => (
 const ApiSection = props => (
   <Collapse in={props.open} timeout="auto" unmountOnExit>
     <List component="div" disablePadding>
+      <ListSubheader>Validations</ListSubheader>
       <MenuItem
         title='Required Validation'
         url='required-validation'
@@ -227,6 +228,31 @@ const ApiSection = props => (
       <MenuItem
         title='Number Limit Validation'
         url='number-limit-validation'
+        onClick={() => props.toggleMenu(false)}
+        style={props.classes.link} />
+
+      <ListSubheader>Actions</ListSubheader>
+      <MenuItem
+        title='Validate On Click'
+        url='validate-on-click'
+        onClick={() => props.toggleMenu(false)}
+        style={props.classes.link} />
+
+      <MenuItem
+        title='Clear Validations On Click'
+        url='clear-validations-on-click'
+        onClick={() => props.toggleMenu(false)}
+        style={props.classes.link} />
+
+      <MenuItem
+        title='On Validation Success'
+        url='on-validation-success'
+        onClick={() => props.toggleMenu(false)}
+        style={props.classes.link} />
+
+      <MenuItem
+        title='On Validation Error'
+        url='on-validation-error'
         onClick={() => props.toggleMenu(false)}
         style={props.classes.link} />
     </List>
