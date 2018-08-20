@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Viewport from '../Viewport';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
 import TableApi from '../common/TableApi';
 import Code from '../common/Code';
@@ -19,19 +18,17 @@ class BetweenValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Viewport>
-        <div className={classes.div}>
-          <Typography variant="title">
-            Between Validation
-          </Typography>
-          <Typography style={{ marginTop: 32 }}>
-            This validation is used to validate limits between two fields, which the value of the first field cannot be greater than the value of the second field.
-          </Typography>
-          <Api classes={classes} />
-          <Annotation classes={classes} />
-          <DataBinding classes={classes} />
-        </div>
-      </Viewport>
+      <div className={classes.div}>
+        <Typography variant="title">
+          Between Validation
+        </Typography>
+        <Typography style={{ marginTop: 32 }}>
+          This validation is used to validate limits between two fields, which the value of the first field cannot be greater than the value of the second field.
+        </Typography>
+        <Api classes={classes} />
+        <Annotation classes={classes} />
+        <DataBinding classes={classes} />
+      </div>
     );
   }
 }

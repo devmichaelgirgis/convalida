@@ -94,13 +94,15 @@ class SideMenu extends Component {
           <MenuIcon />
         </IconButton>
         <Drawer open={open} onClose={() => this.toggleMenu(false)}>
-          <Link to={process.env.PUBLIC_URL} className={classes.linkHoverized}>
+          <Link to={"/"} onClick={() => this.toggleMenu(false)} className={classes.linkHoverized}>
             <Typography className={classes.menuTitle}>
               Convalida
             </Typography>
           </Link>
           <a
+            onClick={() => this.toggleMenu(false)}
             className={classes.linkHoverized}
+            target="_blank"
             href={release.url ? release.url : process.env.PUBLIC_URL}>
             <Typography className={classes.menuSubtitle}>
               { release.name }

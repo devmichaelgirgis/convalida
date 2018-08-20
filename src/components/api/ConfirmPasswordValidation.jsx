@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Viewport from '../Viewport';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
 import TableApi from '../common/TableApi';
 import Code from '../common/Code';
@@ -20,19 +19,17 @@ class ConfirmPasswordValidation extends Component {
     render() {
         const { classes } = this.props;
         return (
-          <Viewport>
-            <div className={classes.div}>
-              <Typography variant="title">
-                Confirm Password Validation
-              </Typography>
-              <Typography style={{ marginTop: 32 }}>
-                This validation is only applied to confirm password and it must be used only when there is a field validated by <Link text="Password Validation" url={`${process.env.PUBLIC_URL}/#/password-validation`} />, otherwise an error will occurs.
-              </Typography>
-              <Api classes={classes} />
-              <Annotation classes={classes} />
-              <DataBinding classes={classes} />
-            </div>
-          </Viewport>
+          <div className={classes.div}>
+            <Typography variant="title">
+              Confirm Password Validation
+            </Typography>
+            <Typography style={{ marginTop: 32 }}>
+              This validation is only applied to confirm password and it must be used only when there is a field validated by <Link text="Password Validation" url={`${process.env.PUBLIC_URL}/#/password-validation`} />, otherwise an error will occurs.
+            </Typography>
+            <Api classes={classes} />
+            <Annotation classes={classes} />
+            <DataBinding classes={classes} />
+          </div>
         );
       }
 }

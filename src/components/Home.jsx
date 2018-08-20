@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, Avatar, Button } from '@material-ui/core';
-import Viewport from './Viewport';
 import logo from '../assets/images/logo.png';
 import { Link } from 'react-router-dom';
 
@@ -33,25 +32,23 @@ class Home extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Viewport>
-        <div style={{ marginTop: 128 }}>
-          <Avatar alt="Logo" src={logo} className={classes.avatar} />
-          <Typography className={classes.title} align="center" variant="display2">
-            Convalida
-          </Typography>
-          <Typography className={classes.subtitle} align="center" variant="headline">
-            A field validation library for Android.
-          </Typography>
-          <Link to="introduction" style={{ textDecoration: 'none' }}>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button}>
-              <b>Get Started</b>
-            </Button>
-          </Link>
-        </div>
-      </Viewport>
+      <div style={{ marginTop: 128 }}>
+        <Avatar alt="Logo" src={logo} className={classes.avatar} />
+        <Typography className={classes.title} align="center" variant="display2">
+          Convalida
+        </Typography>
+        <Typography className={classes.subtitle} align="center" variant="headline">
+          A field validation library for Android.
+        </Typography>
+        <Link to="introduction" style={{ textDecoration: 'none' }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}>
+            <b>Get Started</b>
+          </Button>
+        </Link>
+      </div>
     );
   }
 }

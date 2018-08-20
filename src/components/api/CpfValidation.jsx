@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Viewport from '../Viewport';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
 import TableApi from '../common/TableApi';
 import Code from '../common/Code';
@@ -20,19 +19,17 @@ class CpfValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Viewport>
-        <div className={classes.div}>
-          <Typography variant="title">
-            Cpf Validation
-          </Typography>
-          <Typography style={{ marginTop: 32 }}>
-            This validation is used to validate <Link text="Cpf" url="https://pt.wikipedia.org/wiki/Cadastro_de_pessoas_f%C3%ADsicas" /> (Brazilian Personal Number) fields. The Cpf is equivalent to USA's Social Security Number.
-          </Typography>
-          <Api classes={classes} />
-          <Annotation classes={classes} />
-          <DataBinding classes={classes} />
-        </div>
-      </Viewport>
+      <div className={classes.div}>
+        <Typography variant="title">
+          Cpf Validation
+        </Typography>
+        <Typography style={{ marginTop: 32 }}>
+          This validation is used to validate <Link text="Cpf" url="https://pt.wikipedia.org/wiki/Cadastro_de_pessoas_f%C3%ADsicas" /> (Brazilian Personal Number) fields. The Cpf is equivalent to USA's Social Security Number.
+        </Typography>
+        <Api classes={classes} />
+        <Annotation classes={classes} />
+        <DataBinding classes={classes} />
+      </div>
     );
   }
 }

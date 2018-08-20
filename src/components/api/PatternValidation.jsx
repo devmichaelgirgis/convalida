@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Viewport from '../Viewport';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
 import TableApi from '../common/TableApi';
 import Code from '../common/Code';
@@ -19,19 +18,17 @@ class PatternValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Viewport>
-        <div className={classes.div}>
-          <Typography variant="title">
-            Pattern Validation
-          </Typography>
-          <Typography style={{ marginTop: 32 }}>
-            This validation is applied to fields that must have a pattern valeu based on a regular expression.
-          </Typography>
-          <Api classes={classes} />
-          <Annotation classes={classes} />
-          <DataBinding classes={classes} />
-        </div>
-      </Viewport>
+      <div className={classes.div}>
+        <Typography variant="title">
+          Pattern Validation
+        </Typography>
+        <Typography style={{ marginTop: 32 }}>
+          This validation is applied to fields that must have a pattern valeu based on a regular expression.
+        </Typography>
+        <Api classes={classes} />
+        <Annotation classes={classes} />
+        <DataBinding classes={classes} />
+      </div>
     );
   }
 }

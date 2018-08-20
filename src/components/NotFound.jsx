@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Typography, withStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import AppBar from './appbar/AppBar';
 
 const styles = {
   link: {
@@ -17,7 +16,6 @@ class NotFound extends Component {
     const { classes } = this.props;
     return (
       <div style={{ marginTop: "15%" }}>
-        <AppBar title="Convalida" />
         <Typography align="center" variant="display1">
           :(
         </Typography>
