@@ -18,6 +18,7 @@ import CpfValidation from './components/api/CpfValidation';
 import CreditCardValidation from './components/api/CreditCardValidation';
 import NumberLimitValidation from './components/api/NumberLimitValidation';
 import Viewport from './components/Viewport';
+import ValidateOnClick from './components/api/actions/ValidateOnClick';
 
 const theme = createMuiTheme({
   palette: {
@@ -67,6 +68,7 @@ export default class App extends Component {
               <Route path="/cpf-validation" component={CpfValidation} />
               <Route path="/credit-card-validation" component={CreditCardValidation} />
               <Route path="/number-limit-validation" component={NumberLimitValidation} />
+              <Route path="/validate-on-click" component={ValidateOnClick} />
               <Route component={NotFound} />
             </Switch>
           </Viewport>
