@@ -122,6 +122,18 @@ class GettingStartedSection extends Component {
               style={classes.link} />
 
             <MenuItem
+              title='How It Works'
+              url='how-it-works'
+              onClick={() => toggleMenu(false)}
+              style={classes.link} />
+
+            <MenuItem
+              title='How To Use'
+              url='how-to-use'
+              onClick={() => toggleMenu(false)}
+              style={classes.link} />
+
+            <MenuItem
               title='Download'
               url='download'
               onClick={() => toggleMenu(false)}

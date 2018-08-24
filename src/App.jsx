@@ -19,6 +19,8 @@ import CreditCardValidation from './components/api/CreditCardValidation';
 import NumberLimitValidation from './components/api/NumberLimitValidation';
 import Viewport from './components/Viewport';
 import ValidateOnClick from './components/api/actions/ValidateOnClick';
+import HowItWorks from './components/gettingstarted/HowItWorks';
+import HowToUse from './components/gettingstarted/HowToUse';
 
 const theme = createMuiTheme({
   palette: {
@@ -55,6 +57,8 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/introduction" component={Introduction} />
+              <Route path="/how-it-works" component={HowItWorks} />
+              <Route path="/how-to-use" component={HowToUse} />
               <Route path="/download" component={Download} />
               <Route path="/required-validation" component={RequiredValidation} />
               <Route path="/email-validation" component={EmailValidation} />
