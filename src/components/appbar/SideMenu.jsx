@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles, Divider, Typography, ListSubheader } from '@material-ui/core';
+import { withStyles, Divider, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -39,36 +39,14 @@ const styles = theme => ({
   }
 });
 
-const MenuItem = props => (
-  <Link to={props.url} className={props.style}>
-    <ListItem button onClick={props.onClick}>
-      <Typography style={{ fontSize: 16, color: '#333' }}>
-        {props.title}
-      </Typography>
-    </ListItem>
-  </Link>
-);
-
 class SideMenu extends Component {
 
   state = {
     open: false,
-    gettingStartedOpened: false,
-    apiOpened: false,
     release: {}
   };
 
   toggleMenu = open => this.setState({ open })
-
-  toggleGettingStartedSection = () => this.setState({
-    ...this.state,
-    gettingStartedOpened: !this.state.gettingStartedOpened
-  })
-
-  toggleApiSection = () => this.setState({
-    ...this.state,
-    apiOpened: !this.state.apiOpened
-  })
 
   getLatestGitHubRelease = async () => {
     return await Axios.get("https://api.github.com/repos/WellingtonCosta/convalida/releases/latest")
@@ -83,7 +61,7 @@ class SideMenu extends Component {
 
   render() {
     const { classes } = this.props;
-    const { open, gettingStartedOpened, apiOpened, release } = this.state;
+    const { open, release } = this.state;
     return (
       <div>
         <IconButton
@@ -110,25 +88,11 @@ class SideMenu extends Component {
           </a>
           <Divider />
           <List component="nav">
-            <ListItem button onClick={this.toggleGettingStartedSection}>
-              <Typography style={{ fontSize: 16, color: '#333' }}>
-                <b>Getting Started</b>
-              </Typography>
-              {gettingStartedOpened ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
             <GettingStartedSection
               classes={classes}
-              open={gettingStartedOpened}
               toggleMenu={this.toggleMenu} />
-            <ListItem button onClick={this.toggleApiSection}>
-              <Typography style={{ fontSize: 16, color: '#333' }}>
-                <b>API</b>
-              </Typography>
-              {apiOpened ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
             <ApiSection
               classes={classes}
-              open={apiOpened}
               toggleMenu={this.toggleMenu} />
           </List>
         </Drawer>
@@ -137,126 +101,206 @@ class SideMenu extends Component {
   }
 }
 
-const GettingStartedSection = props => (
-  <Collapse in={props.open} timeout="auto" unmountOnExit>
-    <List component="div" disablePadding>
-      <MenuItem
-        title='Introduction'
-        url='introduction'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
+class GettingStartedSection extends Component {
+  state = {
+    open: false
+  };
 
-      <MenuItem
-        title='Download'
-        url='download'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-    </List>
-  </Collapse>
+  render() {
+    const { classes, toggleMenu } = this.props;
+    const { open } = this.state;
+    const onOpen = () => this.setState({ open: !open })
+    return (
+      <div>
+        <ExpandableMenuItem onClick={onOpen} open={open} title="Getting Started" />
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <MenuItem
+              title='Introduction'
+              url='introduction'
+              onClick={() => toggleMenu(false)}
+              style={classes.link} />
+
+            <MenuItem
+              title='Download'
+              url='download'
+              onClick={() => toggleMenu(false)}
+              style={classes.link} />
+          </List>
+        </Collapse>
+      </div>
+    );
+  }
+}
+
+class ApiSection extends Component {
+
+  state = {
+    rootOpened: false,
+    validationsOpened: false,
+    actionsOpened: false
+  };
+
+  toggleRoot = () => this.setState({
+    ...this.state,
+    rootOpened: !this.state.rootOpened
+  })
+
+  toggleValidations = () => this.setState({
+    ...this.state,
+    validationsOpened: !this.state.validationsOpened
+  })
+
+  toggleActions = () => this.setState({
+    ...this.state,
+    actionsOpened: !this.state.actionsOpened
+  })
+
+  render() {
+    const { classes, toggleMenu } = this.props;
+    const { rootOpened, validationsOpened, actionsOpened } = this.state;
+    return (
+      <div>
+        <ExpandableMenuItem
+          onClick={this.toggleRoot}
+          open={rootOpened}
+          title="API" />
+        <Collapse in={rootOpened} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ExpandableMenuItem
+              onClick={this.toggleValidations}
+              open={validationsOpened}
+              title="Validations" />
+            <Collapse in={validationsOpened} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+              <MenuItem
+                  title='Required Validation'
+                  url='required-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Email Validation'
+                  url='email-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Confirm Email Validation'
+                  url='confirm-email-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Length Validation'
+                  url='length-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Only Number Validation'
+                  url='only-number-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Pattern Validation'
+                  url='pattern-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Password Validation'
+                  url='password-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Confirm Password Validation'
+                  url='confirm-password-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Between Validation'
+                  url='between-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='CPF Validation'
+                  url='cpf-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Credit Card Validation'
+                  url='credit-card-validation'
+                  onClickList={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Number Limit Validation'
+                  url='number-limit-validation'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+              </List>
+            </Collapse>      
+            <ExpandableMenuItem
+              onClick={this.toggleActions}
+              open={actionsOpened}
+              title="Actions" />
+            <Collapse in={actionsOpened} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <MenuItem
+                  title='Validate On Click'
+                  url='validate-on-click'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='Clear Validations On Click'
+                  url='clear-validations-on-click'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='On Validation Success'
+                  url='on-validation-success'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+          
+                <MenuItem
+                  title='On Validation Error'
+                  url='on-validation-error'
+                  onClick={() => toggleMenu(false)}
+                  style={classes.link} />
+              </List>
+              </Collapse>
+          </List>
+        </Collapse>
+      </div>
+    );
+  }
+}
+
+const MenuItem = props => (
+  <Link to={props.url} className={props.style}>
+    <ListItem button onClick={props.onClick}>
+      <Typography style={{ fontSize: 16, color: '#333' }}>
+        {props.title}
+      </Typography>
+    </ListItem>
+  </Link>
 );
 
-const ApiSection = props => (
-  <Collapse in={props.open} timeout="auto" unmountOnExit>
-    <List component="div" disablePadding>
-      <ListSubheader>Validations</ListSubheader>
-      <MenuItem
-        title='Required Validation'
-        url='required-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Email Validation'
-        url='email-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Confirm Email Validation'
-        url='confirm-email-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Length Validation'
-        url='length-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Only Number Validation'
-        url='only-number-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Pattern Validation'
-        url='pattern-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Password Validation'
-        url='password-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Confirm Password Validation'
-        url='confirm-password-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Between Validation'
-        url='between-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='CPF Validation'
-        url='cpf-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Credit Card Validation'
-        url='credit-card-validation'
-        onClickList={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Number Limit Validation'
-        url='number-limit-validation'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <ListSubheader>Actions</ListSubheader>
-      <MenuItem
-        title='Validate On Click'
-        url='validate-on-click'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='Clear Validations On Click'
-        url='clear-validations-on-click'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='On Validation Success'
-        url='on-validation-success'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-
-      <MenuItem
-        title='On Validation Error'
-        url='on-validation-error'
-        onClick={() => props.toggleMenu(false)}
-        style={props.classes.link} />
-    </List>
-  </Collapse>
+const ExpandableMenuItem = props => (
+  <ListItem button onClick={props.onClick}>
+    <Typography style={{ fontSize: 16, color: '#333' }}>
+      <b>{props.title}</b>
+    </Typography>
+    {props.open ? <ExpandLess /> : <ExpandMore />}
+  </ListItem>
 );
 
 export default withStyles(styles)(SideMenu);
