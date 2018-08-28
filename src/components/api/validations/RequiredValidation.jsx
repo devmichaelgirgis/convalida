@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
-import TableApi from '../common/TableApi';
-import Code from '../common/Code';
+import TableApi from '../../common/TableApi';
+import Code from '../../common/Code';
 
 const styles = theme => ({
   div: {
@@ -14,16 +14,16 @@ const styles = theme => ({
   }
 });
 
-class NumberLimitValidation extends Component {
+class RequiredValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.div}>
         <Typography variant="title">
-          Number Limit Validation
+          Required Validation
         </Typography>
         <Typography style={{ marginTop: 32 }}>
-          This validation is used to set the minimum and maximum numeric values.
+          This validation is applied to fields that its value cannot be null or empty.
         </Typography>
         <Api classes={classes} />
         <Annotation classes={classes} />
@@ -66,44 +66,6 @@ const Api = props => (
           If true, remove error message automatically when field value is valid.
         </TableCell>
       </TableRow>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          required
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          boolean
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          true
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          If true, the field value cannot be null or empty.
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          min
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          String (integer or float point)
-        </TableCell>
-        <TableCell className={props.classes.tableText} />
-        <TableCell className={props.classes.tableText}>
-          The minimum numeric value allowed.
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          max
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          String (integer or float point)
-        </TableCell>
-        <TableCell className={props.classes.tableText} />
-        <TableCell className={props.classes.tableText}>
-          The maximum numeric value allowed.
-        </TableCell>
-      </TableRow>
     </TableApi>
   </div>
 );
@@ -115,14 +77,11 @@ const Annotation = () => (
     </Typography>
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="java" code={`
-@NumberLimitValidation(
-  errorMessage = R.string.invalid_min_max,
-  autoDismiss = true,
-  required = true,
-  min="1",
-  max="10"
+@RequiredValidation(
+  errorMessage = R.string.field_required,
+  autoDismiss = true
 )
-EditText numberLimitField;
+EditText nameField;
     `} />
   </div>
 );
@@ -135,15 +94,12 @@ const DataBinding = () => (
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="xml" code={`
 &lt;EditText
-  android:id="@+id/number_limit_field"
-  android:hint="@string/number_limit"
-  app:numberLimitValidationErrorMessage="@{@string/invalid_min_max}"
-  app:numberLimitValidationAutoDismiss="@{true}"
-  app:numberLimitValidationRequired="@{true}"
-  app:numberLimitValidationMin='@{"1"}'
-  app:numberLimitValidationMax='@{"10"}' />
+  android:id="@+id/name_field"
+  android:hint="@string/name"
+  app:requiredValidationErrorMessage="@{@string/field_required}"
+  app:requiredValidationAutoDismiss="@{true}" />
     `} />
   </div>
 );
 
-export default withStyles(styles)(NumberLimitValidation);
+export default withStyles(styles)(RequiredValidation);

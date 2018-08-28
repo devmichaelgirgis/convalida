@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
-import TableApi from '../common/TableApi';
-import Code from '../common/Code';
+import TableApi from '../../common/TableApi';
+import Code from '../../common/Code';
 
 const styles = theme => ({
   div: {

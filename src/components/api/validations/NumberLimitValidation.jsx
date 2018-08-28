@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
-import TableApi from '../common/TableApi';
-import Code from '../common/Code';
+import TableApi from '../../common/TableApi';
+import Code from '../../common/Code';
 
 const styles = theme => ({
   div: {
@@ -14,17 +14,16 @@ const styles = theme => ({
   }
 });
 
-
-class LengthValidation extends Component {
+class NumberLimitValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.div}>
         <Typography variant="title">
-          Length Validation
+          Number Limit Validation
         </Typography>
         <Typography style={{ marginTop: 32 }}>
-          This validation is applied to fields that have a minimum and maximum length of characters allowed.
+          This validation is used to set the minimum and maximum numeric values.
         </Typography>
         <Api classes={classes} />
         <Annotation classes={classes} />
@@ -41,32 +40,6 @@ const Api = props => (
     </Typography>
 
     <TableApi>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          min
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          int
-        </TableCell>
-        <TableCell className={props.classes.tableText} />
-        <TableCell className={props.classes.tableText}>
-          The minimum length of characters allowed.
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          max
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          int
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          0
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          The maximum length of characters allowed.
-        </TableCell>
-      </TableRow>
       <TableRow>
         <TableCell className={props.classes.tableText}>
           errorMessage
@@ -93,6 +66,44 @@ const Api = props => (
           If true, remove error message automatically when field value is valid.
         </TableCell>
       </TableRow>
+      <TableRow>
+        <TableCell className={props.classes.tableText}>
+          required
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          boolean
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          true
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          If true, the field value cannot be null or empty.
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className={props.classes.tableText}>
+          min
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          String (integer or float point)
+        </TableCell>
+        <TableCell className={props.classes.tableText} />
+        <TableCell className={props.classes.tableText}>
+          The minimum numeric value allowed.
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className={props.classes.tableText}>
+          max
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          String (integer or float point)
+        </TableCell>
+        <TableCell className={props.classes.tableText} />
+        <TableCell className={props.classes.tableText}>
+          The maximum numeric value allowed.
+        </TableCell>
+      </TableRow>
     </TableApi>
   </div>
 );
@@ -104,14 +115,14 @@ const Annotation = () => (
     </Typography>
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="java" code={`
-@LengthValidation(
-  errorMessage = R.string.min_3_max_10,
-  min = 3,
-  max = 10
+@NumberLimitValidation(
+  errorMessage = R.string.invalid_min_max,
   autoDismiss = true,
-  required = true
+  required = true,
+  min="1",
+  max="10"
 )
-EditText lengthField;
+EditText numberLimitField;
     `} />
   </div>
 );
@@ -124,15 +135,15 @@ const DataBinding = () => (
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="xml" code={`
 &lt;EditText
-  android:id="@+id/length_field"
-  android:hint="@string/length"
-  app:lengthValidationMin="@{3}"
-  app:lengthValidationMax="@{10}"
-  app:lengthValidationErrorMessage="@{@string/min_3_max_10}"
-  app:lengthValidationAutoDismiss="@{true}" 
-  app:lengthValidationRequired="@{true}" />
+  android:id="@+id/number_limit_field"
+  android:hint="@string/number_limit"
+  app:numberLimitValidationErrorMessage="@{@string/invalid_min_max}"
+  app:numberLimitValidationAutoDismiss="@{true}"
+  app:numberLimitValidationRequired="@{true}"
+  app:numberLimitValidationMin='@{"1"}'
+  app:numberLimitValidationMax='@{"10"}' />
     `} />
   </div>
 );
 
-export default withStyles(styles)(LengthValidation);
+export default withStyles(styles)(NumberLimitValidation);

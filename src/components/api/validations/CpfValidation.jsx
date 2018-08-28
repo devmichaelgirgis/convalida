@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
-import TableApi from '../common/TableApi';
-import Code from '../common/Code';
+import TableApi from '../../common/TableApi';
+import Code from '../../common/Code';
+import Link from '../../common/Link';
 
 const styles = theme => ({
   div: {
@@ -14,16 +15,16 @@ const styles = theme => ({
   }
 });
 
-class PasswordValidation extends Component {
+class CpfValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.div}>
         <Typography variant="title">
-          Password Validation
+          Cpf Validation
         </Typography>
         <Typography style={{ marginTop: 32 }}>
-          This validation is applied to validate password fields with minimum length of characters or with a value pattern based on a regular expression.
+          This validation is used to validate <Link text="Cpf" url="https://pt.wikipedia.org/wiki/Cadastro_de_pessoas_f%C3%ADsicas" /> (Brazilian Personal Number) fields. The Cpf is equivalent to USA's Social Security Number.
         </Typography>
         <Api classes={classes} />
         <Annotation classes={classes} />
@@ -68,30 +69,16 @@ const Api = props => (
       </TableRow>
       <TableRow>
         <TableCell className={props.classes.tableText}>
-          min
+          required
         </TableCell>
         <TableCell className={props.classes.tableText}>
-          int
+          boolean
         </TableCell>
         <TableCell className={props.classes.tableText}>
-          0
+          true
         </TableCell>
         <TableCell className={props.classes.tableText}>
-          The minimum length of characteres.
-        </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          pattern
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          String
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-         " "
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          The regular expression that will be applied to validate field value.
+          If true, the field value cannot be null or empty.
         </TableCell>
       </TableRow>
     </TableApi>
@@ -105,13 +92,12 @@ const Annotation = () => (
     </Typography>
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="java" code={`
-@PasswordValidation(
-  errorMessage = R.string.invalid_password,
+@CpfValidation(
+  errorMessage = R.string.invalid_cpf,
   autoDismiss = true,
-  min = 3,
-  pattern = MIXED_CAMEL_CASE
+  required = true
 )
-EditText passwordField;
+EditText cpfField;
     `} />
   </div>
 );
@@ -124,14 +110,13 @@ const DataBinding = () => (
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="xml" code={`
 &lt;EditText
-  android:id="@+id/password_field"
-  android:hint="@string/password"
-  app:passwordValidationErrorMessage="@{@string/invalid_password}"
-  app:passwordValidationAutoDismiss="@{true}"
-  app:passwordValidationMin="@{3}"
-  app:patternValidationPattern="@{MIXED_CAMEL_CASE}"/>
+  android:id="@+id/cpf_field"
+  android:hint="@string/cpf"
+  app:cpfValidationErrorMessage="@{@string/invalid_cpf}"
+  app:cpfValidationAutoDismiss="@{true}"
+  app:cpfValidationRequired="@{true}" />
     `} />
   </div>
 );
 
-export default withStyles(styles)(PasswordValidation);
+export default withStyles(styles)(CpfValidation);

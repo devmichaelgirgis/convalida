@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
-import TableApi from '../common/TableApi';
-import Code from '../common/Code';
-import Link from '../common/Link';
+import TableApi from '../../common/TableApi';
+import Code from '../../common/Code';
+import Link from '../../common/Link';
 
 const styles = theme => ({
   div: {

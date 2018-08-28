@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
-import TableApi from '../common/TableApi';
-import Code from '../common/Code';
+import TableApi from '../../common/TableApi';
+import Code from '../../common/Code';
 
 const styles = theme => ({
   div: {
@@ -14,16 +14,16 @@ const styles = theme => ({
   }
 });
 
-class CreditCardValidation extends Component {
+class PatternValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.div}>
         <Typography variant="title">
-          Credit Card Validation
+          Pattern Validation
         </Typography>
         <Typography style={{ marginTop: 32 }}>
-          This validation is used to validate credit card fields.
+          This validation is applied to fields that must have a pattern valeu based on a regular expression.
         </Typography>
         <Api classes={classes} />
         <Annotation classes={classes} />
@@ -80,6 +80,18 @@ const Api = props => (
           If true, the field value cannot be null or empty.
         </TableCell>
       </TableRow>
+      <TableRow>
+        <TableCell className={props.classes.tableText}>
+          pattern
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          String
+        </TableCell>
+        <TableCell className={props.classes.tableText} />
+        <TableCell className={props.classes.tableText}>
+          The regular expression that will be applied to validate field value.
+        </TableCell>
+      </TableRow>
     </TableApi>
   </div>
 );
@@ -91,12 +103,13 @@ const Annotation = () => (
     </Typography>
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="java" code={`
-@CreditCardValidation(
-  errorMessage = R.string.invalid_credit_card_number,
+@PatternValidation(
+  errorMessage = R.string.pattern_not_match,
   autoDismiss = true,
-  required = true
+  required = true,
+  pattern = MIXED_CAMEL_CASE
 )
-EditText creditCardField;
+EditText patternField;
     `} />
   </div>
 );
@@ -109,13 +122,14 @@ const DataBinding = () => (
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="xml" code={`
 &lt;EditText
-  android:id="@+id/credit_card_field"
-  android:hint="@string/credit_card"
-  app:creditCardValidationErrorMessage="@{@string/invalid_credit_card_number}"
-  app:creditCardValidationAutoDismiss="@{true}"
-  app:creditCardValidationRequired="@{true}" />
+  android:id="@+id/pattern_field"
+  android:hint="@string/pattern"
+  app:patternValidationErrorMessage="@{@string/pattern_not_match}"
+  app:patternValidationAutoDismiss="@{true}"
+  app:patternValidationRequired="@{true}"
+  app:patternValidationPattern="@{MIXED_CAMEL_CASE}"/>
     `} />
   </div>
 );
 
-export default withStyles(styles)(CreditCardValidation);
+export default withStyles(styles)(PatternValidation);

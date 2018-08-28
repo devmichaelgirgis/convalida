@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
-import TableApi from '../common/TableApi';
-import Code from '../common/Code';
+import TableApi from '../../common/TableApi';
+import Code from '../../common/Code';
 
 const styles = theme => ({
   div: {
@@ -14,16 +14,16 @@ const styles = theme => ({
   }
 });
 
-class RequiredValidation extends Component {
+class PasswordValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.div}>
         <Typography variant="title">
-          Required Validation
+          Password Validation
         </Typography>
         <Typography style={{ marginTop: 32 }}>
-          This validation is applied to fields that its value cannot be null or empty.
+          This validation is applied to validate password fields with minimum length of characters or with a value pattern based on a regular expression.
         </Typography>
         <Api classes={classes} />
         <Annotation classes={classes} />
@@ -66,6 +66,34 @@ const Api = props => (
           If true, remove error message automatically when field value is valid.
         </TableCell>
       </TableRow>
+      <TableRow>
+        <TableCell className={props.classes.tableText}>
+          min
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          int
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          0
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          The minimum length of characteres.
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className={props.classes.tableText}>
+          pattern
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          String
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+         " "
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          The regular expression that will be applied to validate field value.
+        </TableCell>
+      </TableRow>
     </TableApi>
   </div>
 );
@@ -77,11 +105,13 @@ const Annotation = () => (
     </Typography>
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="java" code={`
-@RequiredValidation(
-  errorMessage = R.string.field_required,
-  autoDismiss = true
+@PasswordValidation(
+  errorMessage = R.string.invalid_password,
+  autoDismiss = true,
+  min = 3,
+  pattern = MIXED_CAMEL_CASE
 )
-EditText nameField;
+EditText passwordField;
     `} />
   </div>
 );
@@ -94,12 +124,14 @@ const DataBinding = () => (
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="xml" code={`
 &lt;EditText
-  android:id="@+id/name_field"
-  android:hint="@string/name"
-  app:requiredValidationErrorMessage="@{@string/field_required}"
-  app:requiredValidationAutoDismiss="@{true}" />
+  android:id="@+id/password_field"
+  android:hint="@string/password"
+  app:passwordValidationErrorMessage="@{@string/invalid_password}"
+  app:passwordValidationAutoDismiss="@{true}"
+  app:passwordValidationMin="@{3}"
+  app:patternValidationPattern="@{MIXED_CAMEL_CASE}"/>
     `} />
   </div>
 );
 
-export default withStyles(styles)(RequiredValidation);
+export default withStyles(styles)(PasswordValidation);

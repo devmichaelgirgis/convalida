@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import Viewport from './components/Viewport';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
-import Introduction from './components/gettingstarted/Introduction';
-import Download from './components/gettingstarted/Download';
-import RequiredValidation from './components/api/RequiredValidation';
-import EmailValidation from './components/api/EmailValidation';
-import ConfirmEmailValidation from './components/api/ConfirmEmailValidation';
-import LengthValidation from './components/api/LengthValidation';
-import OnlyNumberValidation from './components/api/OnlyNumberValidation';
-import PatternValidation from './components/api/PatternValidation';
-import PasswordValidation from './components/api/PasswordValidation';
-import ConfirmPasswordValidation from './components/api/ConfirmPasswordValidation';
-import BetweenValidation from './components/api/BetweenValidation';
-import CpfValidation from './components/api/CpfValidation';
-import CreditCardValidation from './components/api/CreditCardValidation';
-import NumberLimitValidation from './components/api/NumberLimitValidation';
-import Viewport from './components/Viewport';
-import ValidateOnClick from './components/api/actions/ValidateOnClick';
-import HowItWorks from './components/gettingstarted/HowItWorks';
-import HowToUse from './components/gettingstarted/HowToUse';
+
+import {
+  Introduction,
+  HowItWorks,
+  HowToUse,
+  Download
+} from './components/gettingstarted';
+
+import {
+  RequiredValidation,
+  EmailValidation,
+  ConfirmEmailValidation,
+  LengthValidation,
+  OnlyNumberValidation,
+  PatternValidation,
+  PasswordValidation,
+  ConfirmPasswordValidation,
+  BetweenValidation,
+  CpfValidation,
+  CreditCardValidation,
+  NumberLimitValidation
+} from './components/api/validations';
+
+import { ValidateOnClick } from './components/api/actions';
 
 const theme = createMuiTheme({
   palette: {

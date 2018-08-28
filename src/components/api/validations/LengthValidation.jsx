@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Typography, withStyles, TableRow, TableCell } from '@material-ui/core';
-import TableApi from '../common/TableApi';
-import Code from '../common/Code';
+import TableApi from '../../common/TableApi';
+import Code from '../../common/Code';
 
 const styles = theme => ({
   div: {
@@ -14,16 +14,17 @@ const styles = theme => ({
   }
 });
 
-class BetweenValidation extends Component {
+
+class LengthValidation extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.div}>
         <Typography variant="title">
-          Between Validation
+          Length Validation
         </Typography>
         <Typography style={{ marginTop: 32 }}>
-          This validation is used to validate limits between two fields, which the value of the first field cannot be greater than the value of the second field.
+          This validation is applied to fields that have a minimum and maximum length of characters allowed.
         </Typography>
         <Api classes={classes} />
         <Annotation classes={classes} />
@@ -40,6 +41,32 @@ const Api = props => (
     </Typography>
 
     <TableApi>
+      <TableRow>
+        <TableCell className={props.classes.tableText}>
+          min
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          int
+        </TableCell>
+        <TableCell className={props.classes.tableText} />
+        <TableCell className={props.classes.tableText}>
+          The minimum length of characters allowed.
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className={props.classes.tableText}>
+          max
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          int
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          0
+        </TableCell>
+        <TableCell className={props.classes.tableText}>
+          The maximum length of characters allowed.
+        </TableCell>
+      </TableRow>
       <TableRow>
         <TableCell className={props.classes.tableText}>
           errorMessage
@@ -66,18 +93,6 @@ const Api = props => (
           If true, remove error message automatically when field value is valid.
         </TableCell>
       </TableRow>
-      <TableRow>
-        <TableCell className={props.classes.tableText}>
-          key (Only in annotations)
-        </TableCell>
-        <TableCell className={props.classes.tableText}>
-          int
-        </TableCell>
-        <TableCell className={props.classes.tableText} />
-        <TableCell className={props.classes.tableText}>
-          The value that identifies the pair of fields.
-        </TableCell>
-      </TableRow>
     </TableApi>
   </div>
 );
@@ -89,19 +104,14 @@ const Annotation = () => (
     </Typography>
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="java" code={`
-@BetweenValidation.Start(
-  errorMessage = R.string.invalid_start_value,
+@LengthValidation(
+  errorMessage = R.string.min_3_max_10,
+  min = 3,
+  max = 10
   autoDismiss = true,
-  key = 1
+  required = true
 )
-EditText startField;
-
-@BetweenValidation.End(
-  errorMessage = R.string.invalid_end_value,
-  autoDismiss = true,
-  key = 1
-)
-EditText endField;
+EditText lengthField;
     `} />
   </div>
 );
@@ -114,26 +124,15 @@ const DataBinding = () => (
 
     <Code style={{ marginTop: 8, fontSize: 16 }} language="xml" code={`
 &lt;EditText
-  android:id="@+id/start_field"
-  android:hint="@string/start"
-  app:betweenValidationStartErrorMessage="@{@string/invalid_start_value}"
-  app:betweenValidationEndErrorMessage="@{@string/invalid_end_value}"
-  app:betweenValidationStartAutoDismiss="@{true}"
-  app:betweenValidationEndAutoDismiss="@{true}"
-  app:betweenValidationEndField="@{endField}" />
-
-&lt;EditText
-  android:id="@+id/end_field"
-  android:hint="@string/end" />
+  android:id="@+id/length_field"
+  android:hint="@string/length"
+  app:lengthValidationMin="@{3}"
+  app:lengthValidationMax="@{10}"
+  app:lengthValidationErrorMessage="@{@string/min_3_max_10}"
+  app:lengthValidationAutoDismiss="@{true}" 
+  app:lengthValidationRequired="@{true}" />
     `} />
-
-    <Typography style={{ fontSize: 18, marginTop: 32 }}>
-      <i>Note:</i> <br /><br />
-      <i>Data Binding generates variable names from XML id property using camel case notation.</i> <br />
-      <i>Example: <code>android:id="@+id/end_field"</code> corresponds to <code>endField</code> in the generated Java code.</i> <br /> <br />
-      <i>In the example above we used the reference to generated property (<code>endField</code>) as parameter to binding expression.</i>
-    </Typography>
   </div>
 );
 
-export default withStyles(styles)(BetweenValidation);
+export default withStyles(styles)(LengthValidation);
