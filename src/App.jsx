@@ -29,6 +29,7 @@ import {
 
 import { ValidateOnClick } from './components/api/actions';
 import ClearValidationsOnClick from './components/api/actions/ClearValidationsOnClick';
+import OnValidationSuccess from './components/api/actions/OnValidationSuccess';
 
 const theme = createMuiTheme({
   palette: {
@@ -82,6 +83,7 @@ export default class App extends Component {
               <Route path="/number-limit-validation" component={NumberLimitValidation} />
               <Route path="/validate-on-click" component={ValidateOnClick} />
               <Route path="/clear-validations-on-click" component={ClearValidationsOnClick} />
+              <Route path="/on-validation-success" component={OnValidationSuccess} />
               <Route component={NotFound} />
             </Switch>
           </Viewport>
