@@ -22,7 +22,7 @@ class OnValidationSuccess extends Component {
           On Validation Success
         </Typography>
         <Typography style={{ marginTop: 32 }}>
-          This action represents the success result of the all validations. If all validations are ok, the method mapped with this action will be executed.
+          This action represents the success result of the all validations. If all validations are satisfied, the method mapped with this action will be executed.
         </Typography>
         <Annotation classes={classes} />
         <Typography style={{ fontSize: 18, marginTop: 16 }}>
