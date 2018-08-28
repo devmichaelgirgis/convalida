@@ -28,6 +28,7 @@ import {
 } from './components/api/validations';
 
 import { ValidateOnClick } from './components/api/actions';
+import ClearValidationsOnClick from './components/api/actions/ClearValidationsOnClick';
 
 const theme = createMuiTheme({
   palette: {
@@ -80,6 +81,7 @@ export default class App extends Component {
               <Route path="/credit-card-validation" component={CreditCardValidation} />
               <Route path="/number-limit-validation" component={NumberLimitValidation} />
               <Route path="/validate-on-click" component={ValidateOnClick} />
+              <Route path="/clear-validations-on-click" component={ClearValidationsOnClick} />
               <Route component={NotFound} />
             </Switch>
           </Viewport>
