@@ -1,5 +1,11 @@
 import ValidateOnClick from './ValidateOnClick';
+import ClearValidationsOnClick from './ClearValidationsOnClick';
+import OnValidationSuccess from './OnValidationSuccess';
+import OnValidationError from './OnValidationError';
 
 export {
-  ValidateOnClick
+  ValidateOnClick,
+  ClearValidationsOnClick,
+  OnValidationSuccess,
+  OnValidationError
 };
