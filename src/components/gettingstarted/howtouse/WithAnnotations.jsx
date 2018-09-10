@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Typography, withStyles } from '@material-ui/core';
-import Code from '../common/Code';
+import Code from '../../common/Code';
 
 const styles = theme => ({
   div: {
@@ -10,13 +10,13 @@ const styles = theme => ({
   }
 });
 
-class HowToUse extends Component {
+class WithAnnotations extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.div}>
         <Typography variant="title">
-          How To Use
+          How To Use With Annotations
         </Typography>
         <Typography style={{ marginTop: 32 }}>
           To use Convalida you need to follow some steps, which are to map validations, compile project, initialize the generated class and execute your app. These steps are explained bellow.
@@ -94,15 +94,12 @@ public class SampleActivity extends Activity {
 
 }
           `} />
-        <Typography style={{ marginTop: 32 }}>
+        <Typography style={{ marginTop: 32, marginBottom: 32 }}>
           <b>Step 6 - Run your project!</b>
         </Typography>
-        <Typography style={{ marginTop: 32 }}>
-        <i>Note: The mappings in the step 1 and 2 are using Java annotations, but it's also possible with Data Binding.</i>
-      </Typography>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(HowToUse);
+export default withStyles(styles)(WithAnnotations);

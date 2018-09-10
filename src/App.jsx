@@ -8,7 +8,8 @@ import NotFound from './components/NotFound';
 import {
   Introduction,
   HowItWorks,
-  HowToUse,
+  WithAnnotations,
+  WithDataBinding,
   Download
 } from './components/gettingstarted';
 
@@ -70,7 +71,8 @@ export default class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/introduction" component={Introduction} />
               <Route path="/how-it-works" component={HowItWorks} />
-              <Route path="/how-to-use" component={HowToUse} />
+              <Route path="/how-to-use-with-annotations" component={WithAnnotations} />
+              <Route path="/how-to-use-with-data-binding" component={WithDataBinding} />
               <Route path="/download" component={Download} />
               <Route path="/required-validation" component={RequiredValidation} />
               <Route path="/email-validation" component={EmailValidation} />
